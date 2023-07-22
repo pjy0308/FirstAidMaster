@@ -17,7 +17,9 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:divider="@color/gray"
+        android:dividerHeight="2dp"/>
 
     <TextView
         android:id="@+id/listTitle"
@@ -26,7 +28,7 @@
         android:text="응급처치 목록"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/white"
+        android:textColor="@color/orange"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"

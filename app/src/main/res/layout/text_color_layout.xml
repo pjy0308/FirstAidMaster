@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:text="심폐소생술"
+    android:padding="20sp"
+    android:paddingBottom="20sp"
     android:textColor="@color/white"
     android:textSize="24sp">
 

@@ -18,7 +18,7 @@ class FirstAidList : AppCompatActivity() {
             "벌에 쏘였을 경우", "과호흡", "찔린상처", "부딪힌 상처(멍)", "찢어진 상처", "코피")
 
         val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1, items
+            applicationContext, R.layout.text_color_layout, items
         )
 
         listView.adapter = arrayAdapter
