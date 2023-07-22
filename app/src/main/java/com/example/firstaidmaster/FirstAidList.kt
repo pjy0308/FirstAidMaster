@@ -1,5 +1,6 @@
 package com.example.firstaidmaster
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,5 +23,17 @@ class FirstAidList : AppCompatActivity() {
         )
 
         listView.adapter = arrayAdapter
+        
+        listView.setOnItemClickListener { ArrayAdapter, view, position, id ->
+            if (position == 0) {
+                // 첫번째 응급처치 클릭
+                val intent = Intent(this, CPR::class.java)
+                startActivity(intent)
+            } else if (position == 1) {
+                // 두번째 응급처치 클릭
+            } else {
+
+            }
+        }
     }
 }
