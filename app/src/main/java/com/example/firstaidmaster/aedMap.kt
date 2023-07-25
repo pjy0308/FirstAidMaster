@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.naver.maps.map.LocationTrackingMode
@@ -36,22 +37,27 @@ class aedMap : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    // 권한을 거부했을 경우 앱을 종료
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
         grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if (requestCode === REQUEST_LOCATION) {
-            if (grantResults.size > 0) {
-                for (grant in grantResults) {
-                    if (grant != PackageManager.PERMISSION_GRANTED) {
-                        System.exit(0)
-                    }
-                }
+        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            if (!locationSource.isActivated) {  // 권한 거부됨
+                naverMap.locationTrackingMode = LocationTrackingMode.None
             }
         }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+//        if (requestCode === REQUEST_LOCATION) {
+//            if (grantResults.size > 0) {
+//                for (grant in grantResults) {
+//                    if (grant != PackageManager.PERMISSION_GRANTED) {
+//                        System.exit(0)
+//                    }
+//                }
+//            }
+//        }
     }
 
     override fun onMapReady(naverMap: NaverMap) {
