@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var FirstAidEducation: Button
     lateinit var FirstAidVideo: Button
     lateinit var HowToUseAED: Button
-    lateinit var imageButton: ImageButton
 
     private val frame: RelativeLayout by lazy { // activity_main의 화면 부분
         findViewById(R.id.body_container)
@@ -45,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         FirstAidEducation = findViewById(R.id.FirtstAidEducation)
         FirstAidVideo = findViewById(R.id.FirstAidVideo)
         HowToUseAED = findViewById(R.id.HowToUseAED)
-        imageButton = findViewById<ImageButton>(R.id.imageButton2)
 
         FirstAidEducation.setOnClickListener {
             val intent = Intent(this, FirstAidList::class.java)
@@ -54,11 +52,6 @@ class MainActivity : AppCompatActivity() {
 
         HowToUseAED.setOnClickListener {
             val intent = Intent(this, aedInstruction::class.java)
-            startActivity(intent)
-        }
-
-        imageButton.setOnClickListener {
-            val intent = Intent(this, aedMap::class.java)
             startActivity(intent)
         }
 

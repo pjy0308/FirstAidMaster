@@ -1,6 +1,7 @@
 package com.example.firstaidmaster
 
 import android.content.Intent
+import android.media.session.PlaybackState.CustomAction
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,28 +12,36 @@ import android.widget.TextView
 class FirstAidList : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        var DataList: ArrayList<FirstAidName> = ArrayList<FirstAidName>()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_aid_list)
 
-        val listView = findViewById<ListView>(R.id.listView)
-        val items = arrayOf("심폐소생술", "기도폐쇄", "골절", "화상", "열사병", "뱀에 물렸을 경우",
-            "벌에 쏘였을 경우", "과호흡", "찔린상처", "부딪힌 상처(멍)", "찢어진 상처", "코피")
+        // 리스트에 들어갈 아이템 생성
+        DataList.add(FirstAidName((R.drawable.dog_bite)))
+        DataList.add(FirstAidName(R.drawable.fracture))
+        DataList.add(FirstAidName(R.drawable.overbreathing))
+        DataList.add(FirstAidName(R.drawable.heimrich))
+        DataList.add(FirstAidName(R.drawable.snake_bite))
+        DataList.add(FirstAidName(R.drawable.bee_bite))
+        DataList.add(FirstAidName(R.drawable.cpr_name))
+        DataList.add(FirstAidName(R.drawable.drug_addiction))
+        DataList.add(FirstAidName(R.drawable.heatstroke))
+        DataList.add(FirstAidName(R.drawable.burn))
 
-        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
-            applicationContext, R.layout.text_color_layout, items
-        )
+        // FirstAidListAdapter와 연결
+        var myListView = findViewById<ListView>(R.id.listView)
+        myListView.adapter = FirstAidListAdapter(this, DataList)
 
-        listView.adapter = arrayAdapter
-        
-        listView.setOnItemClickListener { ArrayAdapter, view, position, id ->
+        // 각 item 클릭시 화면 전환 이벤트
+        myListView.setOnItemClickListener { FirstAidListAdapter, view, position, id ->
             if (position == 0) {
-                // 첫번째 응급처치 클릭
+                // 첫 번째 응급처치 클릭
                 val intent = Intent(this, CPR::class.java)
                 startActivity(intent)
             } else if (position == 1) {
-                // 두번째 응급처치 클릭
-            } else {
-
+                // 두 번째 응급처치 클릭
             }
         }
     }
