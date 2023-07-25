@@ -33,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun moveToSettingPage(){
+        val intent = Intent(this, CPR::class.java)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -72,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.setting -> {
-                    replaceFragment(SettingFragment())
+                    moveToSettingPage()
                     true
                 }
                 else -> false
