@@ -23,6 +23,15 @@ class MainActivity : AppCompatActivity() {
         findViewById(R.id.bottom_navigation)
     }
 
+    fun moveToMapPage(){
+        val intent = Intent(this, aedMap::class.java)
+        startActivity(intent)
+    }
+
+    fun moveToHomePage(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,11 +64,11 @@ class MainActivity : AppCompatActivity() {
         bottomNagivationView.setOnNavigationItemSelectedListener {item ->
             when(item.itemId) {
                 R.id.home -> {
-                    replaceFragment(HomeFragment())
+                    moveToHomePage()
                     true
                 }
                 R.id.map -> {
-                    replaceFragment(MapFragment())
+                    moveToMapPage()
                     true
                 }
                 R.id.setting -> {
