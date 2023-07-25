@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.naver.maps.map.LocationTrackingMode
 import com.naver.maps.map.MapFragment
+import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.util.FusedLocationSource
@@ -56,8 +57,8 @@ class aedMap : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(naverMap: NaverMap) {
         this.naverMap = naverMap
         naverMap.locationSource = locationSource
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
     }
-
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1000

@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToSettingPage(){
-        val intent = Intent(this, CPR::class.java)
+        val intent = Intent(this, SettingAlram::class.java)
         startActivity(intent)
     }
 
