@@ -11,9 +11,6 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var FirstAidEducation: Button
-    lateinit var FirstAidVideo: Button
-    lateinit var HowToUseAED: Button
 
     private val frame: RelativeLayout by lazy { // activity_main의 화면 부분
         findViewById(R.id.body_container)
@@ -40,20 +37,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        FirstAidEducation = findViewById(R.id.FirtstAidEducation)
-        FirstAidVideo = findViewById(R.id.FirstAidVideo)
-        HowToUseAED = findViewById(R.id.HowToUseAED)
-
-        FirstAidEducation.setOnClickListener {
-            val intent = Intent(this, FirstAidList::class.java)
-            startActivity(intent)
-        }
-
-        HowToUseAED.setOnClickListener {
-            val intent = Intent(this, aedInstruction::class.java)
-            startActivity(intent)
-        }
 
         // 애플리케이션 실행 후 첫 화면 설정
         //supportFragmentManager.beginTransaction().add(frame.id, HomeFragment()).commit()
