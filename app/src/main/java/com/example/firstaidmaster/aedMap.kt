@@ -64,7 +64,7 @@ class aedMap : AppCompatActivity(), OnMapReadyCallback {
 
         // 현재위치 버튼
         val uiSetting = naverMap.uiSettings
-        uiSetting.isLocationButtonEnabled = true
+        uiSetting.isLocationButtonEnabled = false
 
         // 위치를 반환하는 FusedLocationSource 생성
         locationSource = FusedLocationSource(this@aedMap, LOCATION_PERMISSION_REQUEST_CODE)
