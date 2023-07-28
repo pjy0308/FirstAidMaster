@@ -2,6 +2,7 @@ package com.example.firstaidmaster
 
 import android.annotation.SuppressLint
 import android.app.AlarmManager
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -11,6 +12,8 @@ import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.ActivityCompat
+import com.example.firstaidmaster.AlarmReceiver.Companion.ALARM_TIMER
+import com.example.firstaidmaster.AlarmReceiver.Companion.NOTIFICATION_ID
 import java.util.Calendar
 import java.util.Date
 
@@ -40,20 +43,31 @@ class SettingAlarm : AppCompatActivity() {
             ActivityCompat.requestPermissions(this@SettingAlarm, permissions, REQUEST_NOTIFICATION)
         }
 
-//        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager?
+//        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 //
 //        val intent = Intent(this, AlarmReceiver::class.java)
 //        val pendingIntent = PendingIntent.getBroadcast(
-//            this,0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-//
-//        // 스위치 버튼
+//            this, NOTIFICATION_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        // 스위치 버튼
 //        val switchButton: Switch = findViewById(R.id.alarm_switch)
 //
 //        switchButton.setOnCheckedChangeListener { button, ischecked ->
 //            if (ischecked) {
-//                setAlarm(6, 22)
+//                val repeatInterval: Long = ALARM_TIMER * 1000L
+//                val calendar = Calendar.getInstance().apply {
+//                    timeInMillis = System.currentTimeMillis()
+//                    set(Calendar.HOUR_OF_DAY, 7)
+//                    set(Calendar.MINUTE, 30)
+//                }
+//
+//                alarmManager.setRepeating(
+//                    AlarmManager.RTC_WAKEUP,
+//                    calendar.timeInMillis,
+//                    repeatInterval,
+//                    pendingIntent)
 //            } else {
-//                alarmManager?.cancel(pendingIntent)
+//                alarmManager.cancel(pendingIntent)
 //            }
 //        }
     }

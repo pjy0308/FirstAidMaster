@@ -17,12 +17,12 @@ class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        createNotificationChannel(context)
+        createNotificationChannel()
         deliverNotification(context)
     }
 
     // Notification을 띄우기 위한 Channel 등록
-    private fun createNotificationChannel(context: Context) {
+    private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
                 CHANNEL_ID, // 채널 아이디
@@ -38,7 +38,7 @@ class AlarmReceiver : BroadcastReceiver() {
             notificationChannel.enableLights(true)  // 불빛
             notificationChannel.lightColor = Color.RED  // 색상
             notificationChannel.enableVibration(false)
-            notificationChannel.description = context.getString(R.string.app_name)  // 채널 정보
+            notificationChannel.description = "채널 정보"// 채널 정보
             notificationManager?.createNotificationChannel(notificationChannel)
         }
     }
@@ -71,8 +71,9 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        private const val NOTIFICATION_ID = 0
-        private const val CHANNEL_ID = "channel_id"
-        private const val CHANNEL_NAME = "ChannelName"
+        const val NOTIFICATION_ID = 0
+        const val CHANNEL_ID = "channel_id"
+        const val CHANNEL_NAME = "ChannelName"
+        const val ALARM_TIMER = 5
     }
 }
