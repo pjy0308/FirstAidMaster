@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -34,6 +35,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun moveToHowtoPage(){
+        val intent = Intent(this, FirstAidList::class.java)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -58,6 +64,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+
+        val imgWay = findViewById<ImageView>(R.id.imageButtonWay)
+        val imgVideo = findViewById<ImageView>(R.id.imageButtonVideo)
+        val imgAed = findViewById<ImageView>(R.id.imageButtonAED)
+
+        imgWay.setOnClickListener {
+            moveToHowtoPage()
         }
 
     }
