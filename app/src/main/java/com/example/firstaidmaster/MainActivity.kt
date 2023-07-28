@@ -4,12 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToSettingPage(){
-        val intent = Intent(this, SettingAlram::class.java)
+        val intent = Intent(this, SettingAlarm::class.java)
         startActivity(intent)
     }
 

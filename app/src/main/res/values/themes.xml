@@ -7,5 +7,9 @@
         <item name="android:statusBarColor">@color/black</item>
     </style>
 
+    <style name="ToolbarColorBackArrow" parent="Theme.FirstAidMaster">
+        <item name="android:textColorSecondary">@color/orange</item>
+    </style>
+
     <style name="Theme.FirstAidMaster" parent="Base.Theme.FirstAidMaster" />
 </resources>

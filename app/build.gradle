@@ -48,11 +48,5 @@ dependencies {
     // 하단 내비게이션 바
     implementation 'com.google.android.material:material:1.4.0'
 
-    // retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-
-    // xml parser
-    implementation 'com.tickaroo.tikxml:annotation:0.8.13'
-    implementation 'com.tickaroo.tikxml:core:0.8.13'
-    implementation 'com.tickaroo.tikxml:retrofit-converter:0.8.13'
+    implementation 'androidx.core:core-ktx:1.7.0'
 }

@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".FirstAidList" >
+    tools:context=".SettingAlarm">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="응급처치 방법"
+                android:text="알림 설정"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white"
                 android:textSize="26sp" />
@@ -36,16 +36,25 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="410dp"
-        android:layout_height="606dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="144dp"
+        android:layout_marginBottom="448dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:srcCompat="@drawable/alram_img" />
 
+    <Switch
+        android:id="@+id/alarm_switch"
+        android:layout_width="63dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:switchMinWidth="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
