@@ -22,16 +22,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToMapPage(){
-
+        var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.e-gen.or.kr/egen/search_aed.do"))
+        startActivity(intent)
         //val intent = Intent(this, aedMap::class.java)
         //startActivity(intent)
     }
 
     fun moveToHomePage(){
-        var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.e-gen.or.kr/egen/search_aed.do"))
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        //val intent = Intent(this, MainActivity::class.java)
-        //startActivity(intent)
     }
 
     fun moveToSettingPage(){
