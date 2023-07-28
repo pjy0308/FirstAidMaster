@@ -1,6 +1,7 @@
 package com.example.firstaidmaster
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -21,13 +22,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToMapPage(){
-        val intent = Intent(this, aedMap::class.java)
-        startActivity(intent)
+
+        //val intent = Intent(this, aedMap::class.java)
+        //startActivity(intent)
     }
 
     fun moveToHomePage(){
-        val intent = Intent(this, MainActivity::class.java)
+        var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.e-gen.or.kr/egen/search_aed.do"))
         startActivity(intent)
+        //val intent = Intent(this, MainActivity::class.java)
+        //startActivity(intent)
     }
 
     fun moveToSettingPage(){
