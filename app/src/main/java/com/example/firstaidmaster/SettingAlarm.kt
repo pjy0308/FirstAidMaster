@@ -43,6 +43,16 @@ class SettingAlarm : AppCompatActivity() {
             ActivityCompat.requestPermissions(this@SettingAlarm, permissions, REQUEST_NOTIFICATION)
         }
 
+        val switchButton: Switch = findViewById(R.id.alarm_switch)
+
+        switchButton.setOnCheckedChangeListener { button, ischecked ->
+            if (ischecked) {
+                showToast("알림이 허용되었습니다. ")
+            } else {
+                showToast("알림이 거부되었습니다. ")
+            }
+        }
+
 //        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 //
 //        val intent = Intent(this, AlarmReceiver::class.java)
@@ -79,7 +89,7 @@ class SettingAlarm : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == REQUEST_NOTIFICATION) {
-            if (grantResults.isEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 showToast("알림 권한이 허용되었습니다. ")
             } else {
                 showToast("알림 권한이 거부되었습니다. ")
