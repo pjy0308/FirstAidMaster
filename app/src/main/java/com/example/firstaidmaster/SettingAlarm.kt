@@ -1,31 +1,31 @@
 package com.example.firstaidmaster
 
-import android.annotation.SuppressLint
-import android.app.AlarmManager
 import android.app.NotificationManager
-import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.widget.Switch
 import android.widget.Toast
-import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.ActivityCompat
-import com.example.firstaidmaster.AlarmReceiver.Companion.ALARM_TIMER
-import com.example.firstaidmaster.AlarmReceiver.Companion.NOTIFICATION_ID
-import java.util.Calendar
-import java.util.Date
+import com.example.firstaidmaster.databinding.ActivityMainBinding
+
 
 class SettingAlarm : AppCompatActivity() {
-    private val REQUEST_NOTIFICATION = 100
-    private var alarmManager: AlarmManager? = null
 
-    @SuppressLint("WrongViewCast", "MissingInflatedId")
+    private val REQUEST_CODE_NOTIFICATION = 100
+
+    lateinit var alarm_switch: Switch
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting_alarm)
+
+        alarm_switch = findViewById(R.id.alarm_switch)
 
         // 툴바 생성
         val toolbar: androidx.appcompat.widget.Toolbar
@@ -34,52 +34,43 @@ class SettingAlarm : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)   // 뒤로가기 버튼 활성화 (화살표)
         supportActionBar?.setDisplayShowTitleEnabled(false) // 기본 apptitle 지우기
 
-        // 앱 실행시 권한이 부여되지 않은 경우 요청
+        FirebaseMessagingService().getFirebaseToken()
+
+        alarm_switch.isChecked = checkNotificationPermission()
+
+        alarm_switch.setOnCheckedChangeListener { button, isChecked ->
+            if (isChecked) {
+                // 스위치 버튼이 on일 때 알림 권한 요청
+                requestNotificationPermission()
+                showToast("알림이 허용되었습니다. ")
+            } else {
+                cancelNotificationPermission()
+                showToast("설정에서 알람 권한을 꺼주세요. ")
+            }
+        }
+    }
+
+    private fun checkNotificationPermission(): Boolean {
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        return notificationManager.areNotificationsEnabled()
+    }
+
+    private fun requestNotificationPermission() {
         if (ActivityCompat.checkSelfPermission(this@SettingAlarm, android.Manifest.permission.POST_NOTIFICATIONS)
             != PackageManager.PERMISSION_GRANTED) {
 
             var permissions = arrayOf(android.Manifest.permission.POST_NOTIFICATIONS)
 
-            ActivityCompat.requestPermissions(this@SettingAlarm, permissions, REQUEST_NOTIFICATION)
+            ActivityCompat.requestPermissions(this@SettingAlarm, permissions, REQUEST_CODE_NOTIFICATION)
         }
+    }
 
-        val switchButton: Switch = findViewById(R.id.alarm_switch)
-
-        switchButton.setOnCheckedChangeListener { button, ischecked ->
-            if (ischecked) {
-                showToast("알림이 허용되었습니다. ")
-            } else {
-                showToast("알림이 거부되었습니다. ")
-            }
-        }
-
-//        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-//
-//        val intent = Intent(this, AlarmReceiver::class.java)
-//        val pendingIntent = PendingIntent.getBroadcast(
-//            this, NOTIFICATION_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-
-        // 스위치 버튼
-//        val switchButton: Switch = findViewById(R.id.alarm_switch)
-//
-//        switchButton.setOnCheckedChangeListener { button, ischecked ->
-//            if (ischecked) {
-//                val repeatInterval: Long = ALARM_TIMER * 1000L
-//                val calendar = Calendar.getInstance().apply {
-//                    timeInMillis = System.currentTimeMillis()
-//                    set(Calendar.HOUR_OF_DAY, 7)
-//                    set(Calendar.MINUTE, 30)
-//                }
-//
-//                alarmManager.setRepeating(
-//                    AlarmManager.RTC_WAKEUP,
-//                    calendar.timeInMillis,
-//                    repeatInterval,
-//                    pendingIntent)
-//            } else {
-//                alarmManager.cancel(pendingIntent)
-//            }
-//        }
+    private fun cancelNotificationPermission() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        val uri = Uri.fromParts("package", packageName, null)
+        intent.data = uri
+        startActivityForResult(intent, REQUEST_CODE_NOTIFICATION)
     }
 
     override fun onRequestPermissionsResult(
@@ -88,7 +79,7 @@ class SettingAlarm : AppCompatActivity() {
         grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == REQUEST_NOTIFICATION) {
+        if (requestCode == REQUEST_CODE_NOTIFICATION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 showToast("알림 권한이 허용되었습니다. ")
             } else {
@@ -96,36 +87,6 @@ class SettingAlarm : AppCompatActivity() {
             }
         }
     }
-
-    private fun setAlarm(hour: Int, minute: Int) {
-        // AlarmReceiver에 값 전달
-        val intent = Intent(this, AlarmReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(
-            this,0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-
-        // alram 등록 전, push cancel
-        alarmManager?.cancel(pendingIntent)
-
-        // 알람 시간 설정
-        val calendar: Calendar = Calendar.getInstance().apply {
-            timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, minute)
-            set(Calendar.SECOND, 0)
-        }
-
-        if (calendar.time < Date()) {
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
-        }
-
-        alarmManager?.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            pendingIntent
-        )
-    }
-
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
