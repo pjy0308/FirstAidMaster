@@ -19,10 +19,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToMapPage(){
-        var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.e-gen.or.kr/egen/search_aed.do"))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.e-gen.or.kr/egen/search_aed.do"))
         startActivity(intent)
-        //val intent = Intent(this, aedMap::class.java)
-        //startActivity(intent)
     }
 
     fun moveToHomePage(){
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun moveToHowToAED() {
+    fun moveToHowtoAED() {
         val intent = Intent(this, AED_1::class.java)
         startActivity(intent)
     }
@@ -85,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         imgAed.setOnClickListener {
-            moveToHowToAED()
+            moveToHowtoAED()
         }
 
         imgVideo.setOnClickListener {

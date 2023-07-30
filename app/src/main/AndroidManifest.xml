@@ -3,13 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -134,9 +127,6 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".aedMap"
-            android:exported="false" />
-        <activity
             android:name=".CPR_1"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
@@ -162,9 +152,6 @@
             </intent-filter>
         </service>
 
-        <meta-data
-            android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="lhvlsgmn84" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/alram_icon_img" />
