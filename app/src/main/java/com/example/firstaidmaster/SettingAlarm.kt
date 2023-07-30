@@ -3,10 +3,12 @@ package com.example.firstaidmaster
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.provider.Settings
 import android.widget.Switch
 import android.widget.Toast
@@ -14,6 +16,10 @@ import androidx.core.app.ActivityCompat
 
 
 class SettingAlarm : AppCompatActivity() {
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+    private val SWITCH_STATE_KEY = "switch_state"
 
     private val REQUEST_CODE_NOTIFICATION = 100
 
@@ -33,6 +39,13 @@ class SettingAlarm : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)   // 뒤로가기 버튼 활성화 (화살표)
         supportActionBar?.setDisplayShowTitleEnabled(false) // 기본 apptitle 지우기
 
+        // SharedPreferences 객체 생성
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        editor = sharedPreferences.edit()
+
+        // 스위치 버튼의 상태를 SharedPreferences에서 불러와 설정
+        alarm_switch.isChecked = sharedPreferences.getBoolean(SWITCH_STATE_KEY, false)
+
         // FCM 설정 및 토큰값 가져오기
         FirebaseMessagingService().getFirebaseToken()
 
@@ -40,10 +53,13 @@ class SettingAlarm : AppCompatActivity() {
         //alarm_switch.isChecked = checkNotificationPermission()
 
         alarm_switch.setOnCheckedChangeListener { button, isChecked ->
+            // 스위치 버튼의 상태가 변경될 때마다 SharedPreferences에 상태 저장
+            editor.putBoolean(SWITCH_STATE_KEY, isChecked)
+            editor.apply()
+
             if (isChecked) {
                 // 스위치 버튼이 on일 때 알림 권한 요청
                 requestNotificationPermission()
-                //showToast("알림이 허용되었습니다. ")
             } else {
                 // 스위치 버튼이 off일 때 알림 권한 끄도록 요청
                 cancelNotificationPermission()
