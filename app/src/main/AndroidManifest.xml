@@ -21,7 +21,97 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstAidMaster"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AED_5"
+            android:exported="false" />
+        <activity
+            android:name=".AED_4"
+            android:exported="false" />
+        <activity
+            android:name=".AED_3"
+            android:exported="false" />
+        <activity
+            android:name=".AED_2"
+            android:exported="false" />
+        <activity
+            android:name=".AED_1"
+            android:exported="false" />
+        <activity
+            android:name=".Burn"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".Heatstroke"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".DrugAddiction"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".CPR_8"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".CPR_7"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".CPR_6"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".CPR_5"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".CPR_4"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".CPR_3"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".CPR_2"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".BeeBite"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".SnakeBite"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".Heimrichi_4"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".Heimrichi_3"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".Heimrichi_2"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".Heimrichi_1"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".Overbreathing"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".Fracture"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
+        <activity
+            android:name=".DogBite"
+            android:exported="false"
+            android:parentActivityName=".FirstAidList" />
         <activity
             android:name=".SettingAlarm"
             android:exported="false"
@@ -30,11 +120,9 @@
             android:name=".aedMap"
             android:exported="false" />
         <activity
-            android:name=".CPR"
-            android:exported="false" />
-        <activity
-            android:name=".aedInstruction"
-            android:exported="false" />
+            android:name=".CPR_1"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".FirstAidList"
             android:exported="false"

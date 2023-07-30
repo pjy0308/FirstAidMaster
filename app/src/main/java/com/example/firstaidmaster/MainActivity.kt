@@ -40,6 +40,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun moveToHowToAED() {
+        val intent = Intent(this, AED_1::class.java)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -72,6 +77,10 @@ class MainActivity : AppCompatActivity() {
 
         imgWay.setOnClickListener {
             moveToHowtoPage()
+        }
+
+        imgAed.setOnClickListener {
+            moveToHowToAED()
         }
 
     }

@@ -6,7 +6,6 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.media.Ringtone
 import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
@@ -15,14 +14,15 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
-private val TAG = "FirsebaseService"
-
 class FirebaseMessagingService: FirebaseMessagingService() {
+    private val TAG = "FirsebaseService"
+    // 토큰 생성 함수
     override fun onNewToken(token: String) {
         super.onNewToken(token)
 
         Log.d(TAG, "new Token: $token")
 
+        // 토큰 값을 따로 저장
         val pref = this.getSharedPreferences("token", Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString("token", token).apply()
@@ -30,8 +30,9 @@ class FirebaseMessagingService: FirebaseMessagingService() {
         Log.i(TAG, "성공적으로 토큰을 저장함")
     }
 
+    // 메세지 수신 함수
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        //super.onMessageReceived(message)
+        //super.onMessageReceived(message) -> 오류가 떠서 주석처리함
 
         Log.d(TAG, "From: " + remoteMessage!!.from)
 
@@ -45,10 +46,12 @@ class FirebaseMessagingService: FirebaseMessagingService() {
         }
     }
 
+    // 알림 생성 함수
     private fun sendNotification(remoteMessage: RemoteMessage) {
         val unild: Int = (System.currentTimeMillis() / 7).toInt()
 
         val intent = Intent(this, SettingAlarm::class.java)
+
         for (key in remoteMessage.data.keys) {
             intent.putExtra(key, remoteMessage.data.getValue(key))
         }
@@ -57,8 +60,10 @@ class FirebaseMessagingService: FirebaseMessagingService() {
         val pendingIntent = PendingIntent.getActivity(this, unild, intent,
                                 PendingIntent.FLAG_UPDATE_CURRENT)
 
+        // 알림 채널 이름
         val channelId = "my_channel"
 
+        // 알림 소리
         val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -68,6 +73,7 @@ class FirebaseMessagingService: FirebaseMessagingService() {
             val channel = NotificationChannel(channelId, "Notice", NotificationManager.IMPORTANCE_HIGH)
             notificationManager.createNotificationChannel(channel)
 
+            // 알림에 대한 UI
             val notificationBuilder = NotificationCompat.Builder(this, channelId)
                 .setSmallIcon(R.drawable.alram_icon_img)    // 아이콘 설정
                 .setContentTitle(remoteMessage.data["title"].toString())    // 제목
@@ -76,12 +82,12 @@ class FirebaseMessagingService: FirebaseMessagingService() {
                 .setSound(soundUri) // 알림 소리
                 .setContentIntent(pendingIntent)    // 알림 실행 시 intent
 
+            // 알림 생성
             notificationManager.notify(unild, notificationBuilder.build())
         }
-
-
     }
 
+    // 토큰을 가져오는 함수
     fun getFirebaseToken() {
         FirebaseMessaging.getInstance().token.addOnSuccessListener {
             Log.d(TAG, "token=${it}")

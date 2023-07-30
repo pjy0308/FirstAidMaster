@@ -1,15 +1,9 @@
 package com.example.firstaidmaster
 
 import android.content.Intent
-import android.media.session.PlaybackState.CustomAction
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toolbar
-import androidx.appcompat.app.ActionBar
 
 class FirstAidList : AppCompatActivity() {
 
@@ -47,10 +41,44 @@ class FirstAidList : AppCompatActivity() {
         myListView.setOnItemClickListener { FirstAidListAdapter, view, position, id ->
             if (position == 0) {
                 // 첫 번째 응급처치 클릭
-                val intent = Intent(this, CPR::class.java)
+                val intent = Intent(this, DogBite::class.java)
                 startActivity(intent)
             } else if (position == 1) {
                 // 두 번째 응급처치 클릭
+                val intent = Intent(this, Fracture::class.java)
+                startActivity(intent)
+            } else if (position == 2) {
+                // 세 번째 응급처치 클릭
+                val intent = Intent(this, Overbreathing::class.java)
+                startActivity(intent)
+            } else if (position == 3) {
+                // 네 번째 응급처치 클릭
+                val intent = Intent(this, Heimrichi_1::class.java)
+                startActivity(intent)
+            } else if (position == 4) {
+                // 다섯 번째 응급처치 클릭
+                val intent = Intent(this, SnakeBite::class.java)
+                startActivity(intent)
+            } else if (position == 5) {
+                // 여섯 번째 응급처치 클릭
+                val intent = Intent(this, BeeBite::class.java)
+                startActivity(intent)
+            } else if (position == 6) {
+                // 일곱 번째 응급처치 클릭
+                val intent = Intent(this, CPR_1::class.java)
+                startActivity(intent)
+            } else if (position == 7) {
+                // 여덟 번째 응급처치 클릭
+                val intent = Intent(this, DrugAddiction::class.java)
+                startActivity(intent)
+            } else if (position == 8) {
+                // 아홉 번째 응급처치 클릭
+                val intent = Intent(this, Heatstroke::class.java)
+                startActivity(intent)
+            } else if (position == 9) {
+                // 열 번째 응급처치 클릭
+                val intent = Intent(this, DogBite::class.java)
+                startActivity(intent)
             }
         }
     }

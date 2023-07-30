@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Heimrichi_4">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/ToolbarColorBackArrow">
+
+        <TextView
+            android:id="@+id/barTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="기도폐쇄"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/edu_bg"
+        android:layout_width="298dp"
+        android:layout_height="329dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/edu_background" />
+
+    <ImageView
+        android:id="@+id/heimrichiEduText"
+        android:layout_width="282dp"
+        android:layout_height="253dp"
+        android:layout_marginBottom="44dp"
+        app:layout_constraintBottom_toBottomOf="@+id/edu_bg"
+        app:layout_constraintEnd_toEndOf="@+id/edu_bg"
+        app:layout_constraintStart_toStartOf="@+id/edu_bg"
+        app:srcCompat="@drawable/heimrichi_edu_text_4" />
+
+    <ImageView
+        android:id="@+id/heimrichi_img"
+        android:layout_width="343dp"
+        android:layout_height="271dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/heimrichi_edu_img_4" />
+
+    <ImageView
+        android:id="@+id/finish_btn"
+        android:layout_width="205dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/finish_btn" />
+
+    <ImageView
+        android:id="@+id/previous_btn"
+        android:layout_width="47dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heimrichiEduText"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/edu_previous_page_btn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
