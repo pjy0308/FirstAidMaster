@@ -74,18 +74,4 @@
         app:layout_constraintVertical_bias="0.64"
         app:srcCompat="@drawable/edu_next_page_btn" />
 
-    <ImageView
-        android:id="@+id/previous_btn"
-        android:layout_width="47dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cprEduText"
-        app:layout_constraintVertical_bias="0.64"
-        app:srcCompat="@drawable/edu_previous_page_btn" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

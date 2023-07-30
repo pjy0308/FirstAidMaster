@@ -77,7 +77,7 @@ class FirstAidList : AppCompatActivity() {
                 startActivity(intent)
             } else if (position == 9) {
                 // 열 번째 응급처치 클릭
-                val intent = Intent(this, DogBite::class.java)
+                val intent = Intent(this, Burn::class.java)
                 startActivity(intent)
             }
         }

@@ -15,9 +15,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/firstaid_app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/firstaid_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstAidMaster"
         tools:targetApi="31">
@@ -35,19 +35,24 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AED_5"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AED_4"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AED_3"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AED_2"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AED_1"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".Burn"
             android:exported="false"
