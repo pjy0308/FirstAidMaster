@@ -45,6 +45,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun moveToVideo() {
+        val intent = Intent(this, FirstAidVideo::class.java)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -81,6 +86,10 @@ class MainActivity : AppCompatActivity() {
 
         imgAed.setOnClickListener {
             moveToHowToAED()
+        }
+
+        imgVideo.setOnClickListener {
+            moveToVideo()
         }
 
     }
